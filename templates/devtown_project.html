@@ -1,0 +1,440 @@
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+
+    <!-- Bootstrap CSS -->
+    <link href="{{ url_for('static',filename = 'css/bootstrap.min.css')  }}" rel="stylesheet">
+
+    <title>Breast cancer pridiction</title>
+
+    <style>
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: Arial;
+          font-weight: bold;
+        }
+    
+        body {
+          /* display:flex; */
+          justify-content: right;
+          align-items: center;
+          min-height: 100vh;
+          background: #424246;
+          /* overflow:hidden; */
+          overflow-wrap: break-word;
+          /* overflow: scroll; */
+    
+          margin-right: 190px;
+          margin-bottom: 500px;
+        }
+    
+        .navigation {
+          position: relative;
+          width: 50px;
+          height: 50px;
+          background: #fff;
+          transition: width 0.5s, height 0.5s;
+          transition-delay: 0s, 0.75s;
+          transition: 0.5s;
+          z-index: 100000;
+          border-radius: 4px;
+          overflow: hidden;
+        }
+    
+        .navigation.active {
+          width: 250px;
+          height: 400px;
+          transition: height 0.5s, width 0.5s;
+          transition-delay: 0s, 0.75s;
+        }
+    
+        .navigation .toggle {
+          position: relative;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 50px;
+          display: flex;
+          justify-content: flex-end;
+          background: #e01212;
+          transition: 0.5s;
+          cursor: pointer;
+        }
+    
+        .navigation .toggle.active {
+          background: #2196f3;
+        }
+    
+        .navigation .toggle::before {
+          content: '+';
+          position: absolute;
+          font-size: 2em;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 50px;
+          height: 50px;
+          color: #fff;
+          font-weight: 400;
+          transition: 0.5s;
+        }
+    
+        .navigation .toggle.active::before {
+          transform: rotate(315deg);
+        }
+    
+        .navigation ul {
+          position: absolute;
+          left: 0;
+          width: 100%;
+        }
+    
+        .navigation ul li {
+          position: relative;
+          list-style: none;
+          width: 100%;
+        }
+    
+        .navigation ul li a:hover {
+          background: #03a9f4;
+        }
+    
+        .navigation ul li a {
+          position: relative;
+          display: block;
+          width: 100%;
+          display: flex;
+          text-decoration: none;
+          color: #154367;
+        }
+    
+        .navigation ul li a .icon {
+          position: relative;
+          display: block;
+          min-width: 50px;
+          height: 50px;
+          text-align: center;
+          line-height: 50px;
+        }
+    
+        .navigation ul li a .icon .fa {
+          font-size: 24px;
+          color: #154367;
+        }
+    
+        .navigation ul li a .title {
+          position: relative;
+          display: block;
+          line-height: 50px;
+          text-align: start;
+          white-space: nowrap;
+        }
+    
+        .navigation ul li:hover a .icon .fa,
+        .navigation ul li:hover .title {
+          color: #fff;
+        }
+    
+        .footer {
+    
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          background-color: red;
+          color: white;
+          text-align: center;
+        }
+    
+        body {
+          padding: 10px;
+          font-family: Arial;
+    
+        }
+    
+        .top {
+          font-size: 3em;
+          font-weight: bold;
+          text-align: center;
+        }
+    
+    
+        .wrap {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          grid-gap: 30px;
+          max-width: 1000px;
+          margin: auto;
+          margin-top: 50px;
+    
+    
+        }
+    
+        .box {
+          background: gray;
+          border-radius: 10px;
+          margin-right: 245.4px;
+          margin-left: 378.9px;
+          width: 386.8px;
+        }
+    
+        img {
+          width: 100%;
+          height: 300px;
+        }
+    
+        .social {
+          margin-top: -270px;
+          background: #2b3da6;
+          border-radius: 0 20px 20px 0;
+          position: absolute;
+    
+    
+        }
+    
+        a {
+          display: flex;
+          margin: 5px;
+    
+    
+          position: relative;
+          text-decoration: none;
+          font-size: 15px;
+          color: #fff;
+          padding: 5px;
+        }
+    
+        .fa {
+          line-height: 30px;
+          width: 30px;
+          height: 30px;
+          position: relative;
+          text-align: center;
+    
+        }
+    
+        .text {
+          text-align: center;
+          color: #fff;
+        }
+    
+        p {
+          font-size: 20px;
+        }
+    
+        .top {
+          background-color: coral;
+          color: black;
+        }
+    
+        body {
+          background-image: linear-gradient(to right, dodgerblue, darkblue);
+        }
+    .mr{
+      background: red;
+      width: 25px;
+    }
+    .col-12{
+        display: grid;
+        
+    }
+       .place{
+        color: #e01212;
+        
+       }
+       
+      </style>
+</head>
+
+
+         
+        </div>
+      </li>
+</nav>
+
+
+<body background-color:black>
+    <div>
+        <a class="dropdown-item" href="/Major"> Devtown final Major project</a>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <div class="card mb-3">
+
+                    <div class="marq">
+                        <marquee behavior="left" direction=""><B>Breastcancer pridiction</B></marquee>
+                    </div>
+                    <div class="form1">
+                        <form action="{{ url_for('predict')}} " method="get" class="row g-3 my-4">
+
+                            <div class="col-12" style="color: #000;">
+                                <label for="floatingInput" class="form-label">Enter radius_mean</label>
+                                <input type="number" class="form-control" id="rm" name="rm" step="any"
+                                    required="required" placeholder="Enter your radius mean">
+                            </div>
+                            <br>
+                            <br>
+
+
+                            <div class="col-12" style="color: #000;">
+                                <label for="floatingInput" class="form-label"> Enter texture_mean</label>
+                                <input type="number" class="form-control" id="text" name="text" step="any"
+                                    required="required" placeholder="Enter your texture">
+                            </div>
+                            <br>
+                            <br>
+
+                            <div class="col-12" style="color: #000;">
+                                <label for="floatingInput" class="form-label">Enter perimeter_mean</label>
+                                <input type="number" class="form-control" id="perimeter" name="perimeter" step="any"
+                                    required="required" placeholder="Enter your perimeter">
+                            </div>
+                            <br>
+                            <br>
+
+                            <div class="col-12" style="color: #000;">
+                                <label for="floatingInput" class="form-label"> Enter area_mean</label>
+                                <input type="number" class="form-control" id="area" name="area" step="any"
+                                    required="required" placeholder="Enter your area">
+                            </div>
+                            <br>
+                            <br>
+
+                            <div class="col-12" style="color: #000;">
+                                <label for="floatingInput" class="form-label"> Enter smoothness_mean</label>
+                                <input type="number" class="form-control" id="smooth" name="smooth" step="any"
+                                    required="required" placeholder="Enter the number of smooth">
+                            </div>
+                            <br>
+                            <br>
+
+
+                            <div class="col-12" style="color: #000;">
+                                <label for="floatingInput" class="form-label"> Enter compactness_mean</label>
+                                <input type="number" class="form-control" id="compact" name="compact" step="any"
+                                    required="required" placeholder="Enter the estimated compact">
+                            </div>
+                            <br>
+                            <br>
+
+                            <div class="col-12" style="color: #000;">
+                                <label for="floatingInput" class="form-label">Enter concavity_mean</label>
+                                <input type="number" class="form-control" id="connect" name="connect" step="any"
+                                    required="required" placeholder="Enter your connect">
+                            </div>
+                            <br>
+                            <br>
+
+                            <div class="col-12" style="color: #000;">
+                                <label for="floatingInput" class="form-label">Enter concave points_mean</label>
+                                <input type="number" class="form-control" id="concave" name="concave" step="any"
+                                    required="required" placeholder="Enter your concave">
+                            </div>
+                            <br>
+                            <br>
+
+                            <div class="col-12" style="color: #000;">
+                                <label for="floatingInput" class="form-label">Enter symmetry_mean</label>
+                                <input type="number" class="form-control" id="sym" name="sym" step="any"
+                                    required="required" placeholder="Enter your sym">
+                            </div>
+                            <br>
+                            <br>
+
+                            <div class="col-12" style="color: #000;">
+                                <label for="floatingInput" class="form-label">Enter fractal_dimension_mean</label>
+                                <input type="number" class="form-control" id="fract" name="fract" step="any"
+                                    required="required" placeholder="Enter your fract">
+                            </div>
+                            <br>
+                            <br>
+
+
+                            <div class="col-12" style="color: #000;">
+                                <label for="floatingInput" class="form-label">Enter radius_se</label>
+                                <input type="number" class="form-control" id="radius" name="radius" step="any"
+                                    required="required" placeholder="Enter your radius">
+                            </div>
+                            <br>
+                            <br>
+
+
+
+
+
+                            <div class="col-md-4" style="color: #000;">
+
+                                <label for="model1">Choose a Model</label>
+                                <select name="model1" id="exp">
+                                    <option>Select</option>
+                                    <option value="0">Random forest</option>
+                                    <option value="1">Decision tree</option>
+                                    <option value="2">KNN</option>
+                                    <option value="3">logistic classifier</option>
+                                    <option value="4">SVM</option>
+                                    <option value="5">Naive Bayes</option>
+                                    <option value="6">linear Regression</option>
+                                </select>
+
+
+                            </div>
+                            <br>
+                            <br>
+
+
+                            <button type="submit" value="NB" name="NB" class="btn btn-outline-danger">predict</button>
+
+
+                        </form>
+                        </br>
+
+
+                        <p style="color: #FFF;">
+                            {{prediction_text}}
+
+                        </p>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+
+
+
+
+
+        </div>
+
+
+
+    </div>
+       <div class="footer">
+
+   
+     <footer class="container">
+               
+                <p>©2023 breastcancer.com</a> <br><a href="#" style="color: #000000;">Back to top</a></p>
+            </footer>
+            <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"></script>
+          <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+          <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+
+        </div>
+</body>
